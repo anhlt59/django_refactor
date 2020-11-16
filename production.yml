@@ -1,0 +1,48 @@
+version: '3'
+
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/production/django/Dockerfile
+    image: app_production_django
+    depends_on:
+      - mysql
+    env_file:
+      - ./.envs/.production/.django
+      - ./.envs/.production/.mysql
+      - ./.envs/.production/.aws
+      - ./.envs/.production/.firebase
+    command: /start
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    env_file:
+      - ./.envs/.production/.mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  redis:
+    image: redis:5.0
+    container_name: redis
+
+  celeryworker:
+    <<: *django
+    image: app_production_celeryworker
+    container_name: celeryworker
+    depends_on:
+      - redis
+      - mysql
+    ports: []
+    command: /start-celeryworker
+
+  celerybeat:
+    <<: *django
+    image: app_production_celerybeat
+    container_name: celerybeat
+    depends_on:
+      - redis
+      - mysql
+    ports: []
+    command: /start-celerybeat

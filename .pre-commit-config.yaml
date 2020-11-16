@@ -1,0 +1,78 @@
+exclude: 'docs|node_modules|migrations|.git|.tox'
+default_stages: [commit]
+fail_fast: true
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+
+  - repo: https://github.com/psf/black
+    rev: 20.8b1
+    hooks:
+      - id: black
+#        entry: bash -c 'black "$@"; git add -u' --
+
+  - repo: https://github.com/timothycrosley/isort
+    rev: 5.5.3
+    hooks:
+      - id: isort
+
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.3
+    hooks:
+      - id: flake8
+        args: ['--config=setup.cfg']
+        additional_dependencies: [flake8-isort]
+#        entry: bash -c 'flake8 "$@"; git add -u' --
+
+  - repo: local
+    hooks:
+      - id: migrations-check
+        language: system
+        name: Check for uncreated migrations.
+        entry: bash -c "docker-compose -f local.yml run django  python manage.py makemigrations --check --dry-run"
+        files: "models\\.py$"
+        stages: [commit]
+#exclude: 'docs|node_modules|migrations|.git|.tox'
+#default_stages: [commit]
+#fail_fast: true
+#
+#repos:
+#  - repo: https://github.com/pre-commit/pre-commit-hooks
+#    rev: v3.2.0
+#    hooks:
+#      - id: trailing-whitespace
+#      - id: end-of-file-fixer
+#      - id: check-yaml
+#
+##  - repo: https://github.com/psf/black
+##    rev: 20.8b1
+##    hooks:
+##      - id: black
+##        entry: bash -c 'black "$@"; git add -u' --
+#
+#  - repo: https://github.com/timothycrosley/isort
+#    rev: 5.5.3
+#    hooks:
+#      - id: isort
+#
+##  - repo: https://gitlab.com/pycqa/flake8
+##    rev: 3.8.3
+##    hooks:
+##      - id: flake8
+##        args: ['--config=setup.cfg']
+##        additional_dependencies: [flake8-isort]
+##        entry: bash -c 'flake8 "$@"; git add -u' --
+#
+#  - repo: local
+#    hooks:
+#      - id: migrations-check
+#        language: system
+#        name: Check for uncreated migrations.
+#        entry: bash -c "./manage.py makemigrations --check --dry-run"
+#        files: "models\\.py$"
+#        stages: [commit]

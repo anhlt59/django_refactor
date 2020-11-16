@@ -1,0 +1,76 @@
+version: '3'
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: sjc_local_django
+    container_name: django
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - .:/app
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.mysql
+      - ./.envs/.local/.aws
+      - ./.envs/.local/.firebase
+      - ./.envs/.local/.redis
+    ports:
+      - "8000:8000"
+    command: /start
+
+  mysql:
+    image: mysql:5.7
+    container_name: sjc_mysql
+    env_file:
+      - ./.envs/.local/.mysql
+#    volumes:
+#      - ./database:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  redis:
+    image: redis:5.0
+    env_file:
+      - ./.envs/.local/.redis
+    container_name: redis
+    command: redis-server --requirepass 123456
+
+#  celeryworker:
+#    <<: *django
+#    image: anvie_sjc_clone_local_celeryworker
+#    container_name: celeryworker
+#    depends_on:
+#      - redis
+#      - mysql
+#    ports: []
+#    command: /start-celeryworker
+#
+#  celerybeat:
+#    <<: *django
+#    image: anvie_sjc_clone_local_celerybeat
+#    container_name: celerybeat
+#    depends_on:
+#      - redis
+#      - mysql
+#    ports: []
+#    command: /start-celerybeat
+#
+#
+#  docs:
+#    image: anvie_sjc_clone_local_docs
+#    container_name: docs
+#    build:
+#      context: .
+#      dockerfile: ./compose/local/docs/Dockerfile
+#    env_file:
+#      - ./.envs/.local/.django
+#    volumes:
+#      - ./docs:/docs:z
+#      - ./config:/app/config:z
+#    ports:
+#      - "7000:7000"

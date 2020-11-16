@@ -1,0 +1,16 @@
+# General
+# ------------------------------------------------------------------------------
+ENV=DEV
+TIME_ZONE=UTC
+DJANGO_SETTINGS_MODULE=config.settings.local
+DJANGO_SECRET_KEY=S6VC712a2D0oI6KSEB9YS5aB0pc2Wq586SRIcQLhsk3eZAYlCP7x31qWaIE4XN6K
+
+
+# Celery # see compose/entrypoint
+# ------------------------------------------------------------------------------
+CELERY_BROKER_URL=redis://redis:6379/0
+CELERY_RESULT_BACKEND=redis://redis:6379/0
+
+# Flower
+CELERY_FLOWER_USER=debug
+CELERY_FLOWER_PASSWORD=debug

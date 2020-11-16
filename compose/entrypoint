@@ -1,0 +1,62 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+export DATABASE_URL="mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}"
+
+
+python << END
+import sys
+import pymysql
+import redis
+import time
+
+CONNECT_STATUS = 1
+countdown = 30
+
+for _ in range(countdown):
+    try:
+        conn = pymysql.connect(
+            host="${MYSQL_HOST}",
+            port=${MYSQL_PORT},
+            db="${MYSQL_DATABASE}",
+            user="${MYSQL_ROOT_USER}",
+            password="${MYSQL_ROOT_PASSWORD}",
+        )
+        print("MYSQL is available")
+
+        with conn.cursor() as cur:
+            cur.execute(f"Grant all privileges on test_${MYSQL_DATABASE}.* to 'admin'@'%';")
+            print(f"grant all privileges on test_${MYSQL_DATABASE} to 'admin'")
+
+        CONNECT_STATUS = 0
+        break
+    except Exception as e:
+        print("Waiting for MYSQL available...")
+        time.sleep(1)
+
+if CONNECT_STATUS == 1:
+    print("Can't connect MYSQL")
+    sys.exit(CONNECT_STATUS)
+
+CONNECT_STATUS = 1
+
+for _ in range(countdown):
+    try:
+        redis_conn = redis.Redis(host="${REDIS_HOST}", port="${REDIS_PORT}", db="${REDIS_DB}", password="${REDIS_PASSWORD}")
+        redis_conn.ping()
+        print("REDIS is available")
+        CONNECT_STATUS = 0
+        break
+    except Exception as e:
+        print("Waiting for REDIS available...")
+        time.sleep(1)
+
+if CONNECT_STATUS == 1:
+    print("Can't connect REDIS")
+    sys.exit(CONNECT_STATUS)
+END
+
+exec "$@"

@@ -1,0 +1,12 @@
+-r base.txt
+
+gunicorn==20.0.4  # https://github.com/benoitc/gunicorn
+sentry-sdk==0.17.7  # https://github.com/getsentry/sentry-python
+
+# Django
+# ------------------------------------------------------------------------------
+django-compressor==2.4  # https://github.com/django-compressor/django-compressor
+
+# aws
+# ------------------------------------------------------------------------------
+watchtower==0.8.0

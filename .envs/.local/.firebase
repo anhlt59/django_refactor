@@ -1,0 +1,13 @@
+# firebase
+# ------------------------------------------------------------------------------
+DATABASE_FIREBASE_URL=https://console.firebase.google.com/u/0/project/anvie-meidai-dev/database/firestore/data~2Fchanel~2Fot91ktkFLYo7ut0AaYf5
+AUTH_FIREBASE_TYPE=service_account
+AUTH_FIREBASE_PROJECT_ID=anvie-meidai-dev
+AUTH_FIREBASE_PRIVATE_KEY_ID=0f265e1d466caa089b78b5c4bac32452025e5f9c
+AUTH_FIREBASE_PRIVATE_KEY=-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCjM186mAdpqmpj\nvEzsErw+aVCrC1Av/7Od0Z7AaacwAgayQPujtYNH14Ff2gKIHJipYy/inzCbgLW3\nDRF6WI3FYG84N2NYXyEX/UT4Lf0c2/AGTi8MZi5rXl1Njpum8WLSh1zDYf5T10pi\nEdeTTfG+f+AnOD3wBI79WT36JQ1puZSGmK7HW0sqZ0++MSeMGvqmzMhz5ZhtebKz\noEzv3X15QF9dTgMh6Wk/9D7xhciUdmR7RXc9w1yOzTZEEFIfGNT5WQTUiZ9K1+n6\nvwF6dDqmdCqWEcuXiqADgcU0eSYxHfLW3oT7chujrd4OZD6WtQgpu4SzTkdmik8f\nt6OkGT7rAgMBAAECggEAIC0LtGiu5XVU3m8Ml2qmNIPdBKwJVj1Ks23Vp8fsz3lG\nyrQnKMKrrGlft38rCpzguFy23y5VjgMVUI7CCGYXJXf61ZGOA6lVw/4KMAgZJCx0\nqTmW6xHmSwLi0FyycXqb6jgH4PmcA/mpT6aG4yL164IYtoLPK1gqvOZwYrYVa+d6\nsIel32eh1LSy5JHlgOag7YnkEa526bzPQlNOVxLdHd9/Z+dU+TCpGXgvHi4S8pHL\nAjdyD7YaQLJiAYPYdSEDB5ZdTPc9j+vfXx+LRGLYMCXATnbtk/cKk06nzl+9efDp\np6XDGnRaAPoqlKGuUTLQaoAFSVOLN+dzPtsWk8X94QKBgQDlR2qdoWOhdgWg4wpz\nVTbFRHanYHkM+62S/cfqjud80iGptaICRNUj/IdfkD+q+e37EciagYN4ekhKovrP\npSldZLza/LNyQPkRMo0nkyQ0JNo+pSP3lMJIvnkdz6v8I8pZQ0z/TTkciIT0fhdf\nBirKIcTKqvk4R5Uxnmh5ggcWMQKBgQC2OH8Su3bQ8meYXQICZj2+3HcvQBxj+T4W\nLYC4PVBYQACg3Q1x2FnoD9POyh5ytM9FNsw/CvtmLKN1K8u1N5faKBuZ24z6Miky\ntkQSNnE9bV+pzVIorDVmLoWhVJqGpKX4JrWL7+SLsMgyCuVpkAChgSZC+Jq1soJg\nfF6H2ZWz2wKBgCZNG95hS4d5c89AnkpN/exOV5P2ZcJpeMGJa5Afd0Q+xijXkszW\nOtTcJrEsI7aoMb0zZ1OINzI1G0Z8m3F8ocBcR8A9XqzDddgNnc7yoaWkUmEMrUl6\nrEoCp7D3ND/WqsLmn0I24EeH9s3xEm5pVVSW94zzqtZf/uhfEgzaT9zBAoGAF+oY\nO0QhFtEJaYSjU99JMThL6AaY80HttQlpwERDvCFCM9pu/kbvnbYeDSCXmGREY4gK\njCeL0OAA38rMpE7UfgwPe0TGHrvgjkg/bMh6Wh51lJpesvnO1Ec8wGyTDyKiqYui\n/eeQ7ghYbcDiVNVST9/cPqPT4g64b6NC4L9cl0sCgYEAvN1fwBqb3WD+S6CYnnei\nuM71OFWFF4dqfJVYZp06M5gTAwkB9vkc/C3muHf320879vlL1VJ7BK6t4QQs3Fro\nZw2ImM4fCC9r12Si6dx7kvXjHyhXRT0zdOuOKdaI27WSk3tSAFas1KXO1Q85yq6f\n/vENAO4ju1IsPUiTDXNG4jc=\n-----END PRIVATE KEY-----\n
+AUTH_FIREBASE_CLIENT_EMAIL=firebase-adminsdk-7wcqr@anvie-meidai-dev.iam.gserviceaccount.com
+AUTH_FIREBASE_CLIENT_ID=109336198574962198439
+AUTH_FIREBASE_AUTH_URI=https://accounts.google.com/o/oauth2/auth
+AUTH_FIREBASE_TOKEN_URI=https://oauth2.googleapis.com/token
+AUTH_FIREBASE_AUTH_PROVIDER_X509_CERT_URL=https://www.googleapis.com/oauth2/v1/certs
+AUTH_FIREBASE_CLIENT_X509_CERT_URL=https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-7wcqr%40anvie-meidai-dev.iam.gserviceaccount.com
